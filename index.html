@@ -485,6 +485,324 @@
             .modal-content { width: 95%; border-radius: 10px; }
             .close-modal { top: -40px; right: 0; font-size: 35px; }
         }
+
+        /* Headpat Counter Styling */
+.headpat-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, var(--white), var(--pink-base));
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(245, 183, 177, 0.3);
+    border: 3px solid var(--yellow-base);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.headpat-counter:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(245, 183, 177, 0.5);
+}
+
+.pat-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--pink-accent), var(--pink-medium));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--white);
+    animation: pulse 2s ease infinite;
+}
+
+.pat-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.pat-count {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--brown-primary);
+    line-height: 1;
+}
+
+.pat-label {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* Character Pat Interaction */
+.character-placeholder {
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.character-placeholder:active {
+    transform: scale(0.95);
+}
+
+.character-placeholder.pat-animation {
+    animation: headpatBounce 0.5s ease;
+}
+
+.pat-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--yellow-base);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    animation: bounce 1s ease infinite;
+}
+
+.character-placeholder:hover .pat-indicator {
+    opacity: 1;
+}
+
+/* Floating Hearts Animation */
+.floating-heart {
+    position: fixed;
+    font-size: 30px;
+    pointer-events: none;
+    animation: floatHeart 1.5s ease-out forwards;
+    z-index: 9999;
+}
+
+@keyframes headpatBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-20px) scale(1.05); }
+    50% { transform: translateY(0) scale(0.95); }
+    75% { transform: translateY(-10px) scale(1.02); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes floatHeart {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-150px) scale(1.5) rotate(360deg);
+    }
+}
+
+/* Milestone Celebration */
+.milestone-celebration {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--white);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    text-align: center;
+    animation: popIn 0.5s ease;
+    border: 5px solid var(--pink-accent);
+}
+
+.milestone-celebration h3 {
+    font-size: 32px;
+    color: var(--brown-primary);
+    margin-bottom: 10px;
+}
+
+.milestone-celebration p {
+    font-size: 18px;
+    color: var(--text-light);
+}
+
+@keyframes popIn {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    80% { transform: translate(-50%, -50%) scale(1.1); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Responsive untuk HP */
+@media (max-width: 600px) {
+    .headpat-counter {
+        padding: 12px 20px;
+        gap: 10px;
+    }
+    .pat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    .pat-count {
+        font-size: 24px;
+    }
+    .pat-label {
+        font-size: 11px;
+    }
+}
+
+/* Pat Hand Animation */
+.character-placeholder {
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.pat-hand {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 60px;
+    color: var(--brown-primary);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+    transition: opacity 0.3s ease;
+}
+
+.character-placeholder:hover .pat-hand {
+    opacity: 1;
+    animation: handHover 1s ease-in-out infinite;
+}
+
+.pat-hand.patting {
+    opacity: 1;
+    animation: handPat 0.5s ease;
+}
+
+@keyframes handHover {
+    0%, 100% { 
+        transform: translateX(-50%) translateY(0) rotate(-10deg);
+    }
+    50% { 
+        transform: translateX(-50%) translateY(-15px) rotate(-10deg);
+    }
+}
+
+@keyframes handPat {
+    0% { 
+        transform: translateX(-50%) translateY(-60px) rotate(-10deg);
+        opacity: 1;
+    }
+    25% { 
+        transform: translateX(-50%) translateY(0) rotate(-10deg);
+    }
+    50% { 
+        transform: translateX(-50%) translateY(0) rotate(-10deg) scale(1.1);
+    }
+    75% { 
+        transform: translateX(-50%) translateY(-30px) rotate(-10deg);
+    }
+    100% { 
+        transform: translateX(-50%) translateY(-60px) rotate(-10deg);
+        opacity: 0;
+    }
+}
+
+/* Sparkle Effect */
+.pat-sparkle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: var(--yellow-base);
+    opacity: 0;
+    pointer-events: none;
+    animation: sparkleRotate 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(249, 231, 159, 0.8));
+}
+
+.character-placeholder:hover .pat-sparkle {
+    opacity: 1;
+}
+
+@keyframes sparkleRotate {
+    0%, 100% { 
+        transform: rotate(0deg) scale(1);
+        opacity: 0.6;
+    }
+    50% { 
+        transform: rotate(180deg) scale(1.3);
+        opacity: 1;
+    }
+}
+
+/* Multiple Sparkles */
+.sparkle {
+    position: absolute;
+    font-size: 20px;
+    color: var(--yellow-base);
+    pointer-events: none;
+    animation: sparklePop 0.8s ease-out forwards;
+    z-index: 100;
+}
+
+@keyframes sparklePop {
+    0% {
+        opacity: 1;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(360deg) translateY(-50px);
+    }
+}
+
+/* Character bounce saat di-pat */
+.character-placeholder.pat-animation img {
+    animation: characterBounce 0.5s ease;
+}
+
+@keyframes characterBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-15px) scale(1.02); }
+    50% { transform: translateY(0) scale(0.98); }
+    75% { transform: translateY(-8px) scale(1.01); }
+}
+
+/* Squish effect saat tangan nyentuh kepala */
+.pat-squish {
+    animation: squishEffect 0.3s ease;
+}
+
+@keyframes squishEffect {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(0.95, 1.05); }
+}
+
+/* Responsive untuk HP */
+@media (max-width: 600px) {
+    .pat-hand {
+        font-size: 50px;
+        top: -50px;
+    }
+}
     </style>
 </head>
 <body>
@@ -533,14 +851,34 @@
             </div>
         </div>
         <div class="hero-image">
-            <div class="hero-image-container">
-                <div class="hero-image-bg"></div>
-                <div class="character-placeholder">
-                    <!-- GANTI DENGAN FOTO LOKAL KAMU -->
-                    <img src="images/momo.png" alt="MomoIzunobu Character">
-                </div>
-            </div>
+        <div class="hero-image-container">
+        <div class="hero-image-bg"></div>
+        <div class="character-placeholder" id="character-pat" onclick="giveHeadpat()">
+    <!-- Animasi Tangan Pat-Pat -->
+    <div class="pat-hand" id="pat-hand">
+        <i class="fas fa-hand-paper"></i>
+    </div>
+    
+    <img src="images/momo.png" alt="MomoIzunobu Character">
+    
+    <!-- Sparkle effect saat hover -->
+    <div class="pat-sparkle">
+        <i class="fas fa-sparkles"></i>
+    </div>
+</div>
+    </div>
+    
+    <!-- Headpat Counter -->
+    <div class="headpat-counter">
+        <div class="pat-icon">
+            <i class="fas fa-hand-paper"></i>
         </div>
+        <div class="pat-info">
+            <span class="pat-count" id="pat-count">0</span>
+            <span class="pat-label">headpats given! 💕</span>
+        </div>
+    </div>
+</div>
     </section>
 
     <!-- About Section -->
@@ -764,6 +1102,209 @@ async function fetchYouTubeStats() {
 
 // Panggil fungsi saat website dimuat
 fetchYouTubeStats();
+
+// --- HEADPAT COUNTER ---
+let patCount = parseInt(localStorage.getItem('momoHeadpatCount')) || 0;
+const patCountElement = document.getElementById('pat-count');
+
+// Update tampilan counter saat load
+if (patCountElement) {
+    patCountElement.innerText = patCount;
+}
+
+// Fungsi untuk kasih headpat
+function giveHeadpat() {
+    patCount++;
+    localStorage.setItem('momoHeadpatCount', patCount);
+    
+    // Update counter
+    if (patCountElement) {
+        patCountElement.innerText = patCount;
+        
+        // Animasi angka naik
+        patCountElement.style.transform = 'scale(1.3)';
+        setTimeout(() => {
+            patCountElement.style.transform = 'scale(1)';
+        }, 200);
+    }
+    
+    // Animasi tangan pat-pat
+    const patHand = document.getElementById('pat-hand');
+    const character = document.getElementById('character-pat');
+    
+    if (patHand) {
+        // Reset animasi
+        patHand.classList.remove('patting');
+        void patHand.offsetWidth; // Trigger reflow
+        patHand.classList.add('patting');
+        
+        // Hapus class setelah animasi selesai
+        setTimeout(() => {
+            patHand.classList.remove('patting');
+        }, 500);
+    }
+    
+    // Animasi karakter
+    if (character) {
+        character.classList.remove('pat-animation');
+        void character.offsetWidth; // Trigger reflow
+        character.classList.add('pat-animation');
+        
+        // Tambah efek squish
+        character.classList.add('pat-squish');
+        setTimeout(() => {
+            character.classList.remove('pat-squish');
+        }, 300);
+    }
+    
+    // Buat sparkles di sekitar kepala
+    createSparkles();
+    
+    // Buat floating hearts
+    createFloatingHearts();
+    
+    // Cek milestone
+    checkMilestone(patCount);
+    
+    console.log(`💖 Headpat count: ${patCount}`);
+}
+
+// Buat sparkles
+function createSparkles() {
+    const character = document.getElementById('character-pat');
+    if (!character) return;
+    
+    const rect = character.getBoundingClientRect();
+    const sparkles = ['✨', '⭐', '💫'];
+    
+    for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.innerText = sparkles[Math.floor(Math.random() * sparkles.length)];
+            
+            // Posisi random di sekitar kepala
+            const randomX = rect.left + Math.random() * rect.width;
+            const randomY = rect.top + Math.random() * (rect.height / 2);
+            
+            sparkle.style.left = randomX + 'px';
+            sparkle.style.top = randomY + 'px';
+            
+            document.body.appendChild(sparkle);
+            
+            // Hapus sparkle setelah animasi
+            setTimeout(() => sparkle.remove(), 800);
+        }, i * 100);
+    }
+}
+
+// Buat floating hearts
+function createFloatingHearts() {
+    const hearts = ['💖', '💕', '💗', '✨', '🌸'];
+    const randomHeart = hearts[Math.floor(Math.random() * hearts.length)];
+    
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.innerText = randomHeart;
+    
+    const character = document.getElementById('character-pat');
+    if (character) {
+        const rect = character.getBoundingClientRect();
+        const randomX = rect.left + Math.random() * rect.width;
+        const randomY = rect.top + Math.random() * rect.height;
+        
+        heart.style.left = randomX + 'px';
+        heart.style.top = randomY + 'px';
+        
+        const randomRotation = Math.random() * 360;
+        heart.style.transform = `rotate(${randomRotation}deg)`;
+    }
+    
+    document.body.appendChild(heart);
+    
+    setTimeout(() => {
+        heart.remove();
+    }, 1500);
+}
+
+// Cek milestone
+function checkMilestone(count) {
+    if (count % 100 === 0) {
+        showMilestoneCelebration(count);
+    }
+    
+    const specialMilestones = [10, 50, 500, 1000, 5000, 10000];
+    if (specialMilestones.includes(count)) {
+        setTimeout(() => {
+            showMilestoneCelebration(count, true);
+        }, 500);
+    }
+}
+
+// Tampilkan celebration
+function showMilestoneCelebration(count, isSpecial = false) {
+    const celebration = document.createElement('div');
+    celebration.className = 'milestone-celebration';
+    
+    const messages = [
+        `🎉 ${count} Headpats! `,
+        `💖 Momo senang banget! 💖`,
+        isSpecial ? '✨ MILESTONE! ✨' : 'Terima kasih sudah sayang Momo!'
+    ];
+    
+    celebration.innerHTML = `
+        <h3>${messages[0]}</h3>
+        <p>${messages[1]}</p>
+        <p style="font-size: 14px; margin-top: 10px;">${messages[2]}</p>
+    `;
+    
+    document.body.appendChild(celebration);
+    
+    createConfetti();
+    
+    setTimeout(() => {
+        celebration.remove();
+    }, 3000);
+    
+    celebration.onclick = () => celebration.remove();
+}
+
+// Buat confetti
+function createConfetti() {
+    const colors = ['#F1948A', '#F9E79F', '#F5B7B1', '#FADBD8', '#E74C3C'];
+    
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.borderRadius = '50%';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.zIndex = '9998';
+            confetti.style.animation = `fall ${Math.random() * 2 + 1}s linear forwards`;
+            
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 3000);
+        }, i * 50);
+    }
+}
+
+// Tambahkan animasi confetti ke CSS
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fall {
+        to {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
     </script>
 </body>
 </html>
