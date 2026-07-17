@@ -518,9 +518,18 @@
                 <a href="#schedule" class="btn btn-secondary"><i class="fas fa-calendar"></i> Lihat Jadwal</a>
             </div>
             <div class="social-proof">
-                <div class="stat-item"><span class="stat-number">1,77k</span><span class="stat-label">Subscribers</span></div>
-                <div class="stat-item"><span class="stat-number">500+</span><span class="stat-label">Streams</span></div>
-                <div class="stat-item"><span class="stat-number">10K+</span><span class="stat-label">Videos</span></div>
+                <div class="stat-item">
+                    <span class="stat-number" id="stat-subs">0</span>
+                    <span class="stat-label">Subscribers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="stat-views">0</span>
+                    <span class="stat-label">Total Views</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="stat-videos">0</span>
+                    <span class="stat-label">Videos</span>
+                </div>
             </div>
         </div>
         <div class="hero-image">
@@ -710,6 +719,51 @@ window.onclick = function(event) {
         closeVideo();
     }
 }
+
+// --- YOUTUBE AUTO STATS ---
+const YOUTUBE_API_KEY = 'AIzaSyDV_XLqbzhe7Gv-kbZl1MmgeUUDzWLVi0g'; 
+const YOUTUBE_CHANNEL_ID = 'UCfYg_ajuqmmuvfgjqaM998Q';
+
+function formatNumber(num) {
+    if (num >= 1000000) {
+        return (num / 1000000).toFixed(1) + 'M';
+    } else if (num >= 1000) {
+        return (num / 1000).toFixed(1) + 'K';
+    }
+    return num;
+}
+
+async function fetchYouTubeStats() {
+    // PERBAIKAN DI SINI: Gunakan nama variabel, bukan nilai langsung
+    const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${YOUTUBE_CHANNEL_ID}&key=${YOUTUBE_API_KEY}`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        // Debugging: Lihat hasil di Console (F12)
+        console.log('Data YouTube:', data);
+        
+        if (data.items && data.items.length > 0) {
+            const stats = data.items[0].statistics;
+            
+            // Update angka di HTML
+            document.getElementById('stat-subs').innerText = formatNumber(stats.subscriberCount) + '+';
+            document.getElementById('stat-views').innerText = formatNumber(stats.viewCount) + '+';
+            document.getElementById('stat-videos').innerText = stats.videoCount + '+';
+        } else {
+            console.error('Channel tidak ditemukan atau data kosong:', data);
+            document.getElementById('stat-subs').innerText = '0';
+        }
+    } catch (error) {
+        console.error('Gagal mengambil data YouTube:', error);
+        // Fallback jika API error
+        document.getElementById('stat-subs').innerText = 'Error';
+    }
+}
+
+// Panggil fungsi saat website dimuat
+fetchYouTubeStats();
     </script>
 </body>
 </html>
