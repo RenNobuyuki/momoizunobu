@@ -8,18 +8,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* BASE: Pink Muda */
-            --pink-base: #FADBD8;
-            --pink-base-dark: #F5B7B1;
-            --pink-accent: #E74C3C; /* Untuk kontras teks/tombol */
+            /* BASE: Pink dari Logo */
+            --pink-base: #F5D7DC;
+            --pink-medium: #F0B4C0;
+            --pink-accent: #F1948A;
+            --pink-dark: #E74C3C;
             
-            /* SECONDARY: Kuning */
+            /* PRIMARY: Coklat dari Logo (warna text MOMO) */
+            --brown-primary: #5D4E47;
+            --brown-dark: #4A3F35;
+    
+            /* SECONDARY: Kuning dari Logo (border) */
             --yellow-base: #F9E79F;
             --yellow-light: #FDF2C9;
-            
+    
+            /* CHARACTER */
+            --black-hair: #2C2C2C;
+
             /* Neutrals */
             --white: #FFFFFF;
-            --text-dark: #5D4E60;
+            --text-dark: #5D4E47;
             --text-light: #8B7B8B;
         }
 
@@ -27,8 +35,7 @@
 
         body {
             font-family: 'Nunito', sans-serif;
-            /* Background didominasi Pink Muda dengan aksen Kuning */
-            background: linear-gradient(135deg, var(--pink-base) 0%, var(--yellow-light) 100%);
+            background: linear-gradient(135deg, var(--pink-base) 0%, var(--pink-medium) 100%);
             color: var(--text-dark);
             overflow-x: hidden;
             min-height: 100vh;
@@ -55,12 +62,22 @@
         }
 
         .logo {
-            font-family: 'Quicksand', sans-serif; font-size: 28px; font-weight: 800;
-            background: linear-gradient(135deg, var(--pink-base-dark), var(--pink-accent));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-decoration: none; display: flex; align-items: center; gap: 10px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--brown-primary), var(--brown-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .logo i { font-size: 32px; color: var(--pink-accent); -webkit-text-fill-color: var(--pink-accent); }
+        .logo i {
+            font-size: 32px;
+            color: var(--pink-accent);
+            -webkit-text-fill-color: var(--pink-accent);
+        }
 
         .nav-links { display: flex; gap: 30px; list-style: none; }
         .nav-links a {
@@ -81,16 +98,27 @@
         .hero-content { animation: fadeInLeft 1s ease; }
 
         .hero-badge {
-            display: inline-block; background: var(--yellow-base); /* Aksen Kuning */
-            color: var(--text-dark); padding: 8px 20px; border-radius: 25px;
-            font-weight: 700; font-size: 14px; margin-bottom: 20px;
+            display: inline-block;
+            background: var(--yellow-base);
+            color: var(--brown-dark);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 15px rgba(249, 231, 159, 0.5);
+            border: 2px solid var(--yellow-base);
         }
 
         .hero h1 {
-            font-family: 'Quicksand', sans-serif; font-size: 56px; font-weight: 800; line-height: 1.2; margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--pink-accent), var(--pink-base-dark), var(--yellow-base));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--brown-primary), var(--pink-accent), var(--brown-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle { font-size: 20px; color: var(--text-light); margin-bottom: 30px; line-height: 1.6; }
@@ -107,13 +135,26 @@
         }
 
         /* Tombol Utama: Pink */
-        .btn-primary { background: linear-gradient(135deg, var(--pink-base-dark), var(--pink-accent)); color: var(--white); }
-        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(245, 183, 177, 0.5); }
-
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brown-primary), var(--brown-dark));
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(93, 78, 71, 0.5);
+        }
         /* Tombol Sekunder: Kuning */
-        .btn-secondary { background: var(--yellow-base); color: var(--text-dark); border: 3px solid var(--yellow-base); }
-        .btn-secondary:hover { background: var(--yellow-light); transform: translateY(-5px); }
-
+        .btn-secondary {
+            background: var(--pink-accent);
+            color: var(--white);
+            border: 3px solid var(--pink-accent);
+        }
+        .btn-secondary:hover {
+            background: var(--pink-medium);
+            border-color: var(--pink-medium);
+            transform: translateY(-5px);
+        }        
+        
         .hero-image { position: relative; animation: fadeInRight 1s ease; }
         .hero-image-container { position: relative; width: 100%; max-width: 500px; margin: 0 auto; }
 
@@ -150,16 +191,27 @@
         .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
 
         .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-family: 'Quicksand', sans-serif; font-size: 42px; font-weight: 800; color: var(--pink-accent); margin-bottom: 15px; }
+        .section-title h2 {
+                font-family: 'Quicksand', sans-serif;
+                font-size: 42px;
+                font-weight: 800;
+                background: linear-gradient(135deg, var(--brown-primary), var(--pink-accent));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 15px;
+        }        
         .section-title p { color: var(--text-light); font-size: 18px; max-width: 600px; margin: 0 auto; }
-
         .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .about-image { position: relative; }
         
         .about-img-container {
-            background: linear-gradient(135deg, var(--pink-base), var(--yellow-base));
-            border-radius: 30px; padding: 40px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            transform: rotate(-3deg); transition: transform 0.3s ease;
+            background: linear-gradient(135deg, var(--pink-base), var(--pink-medium));
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+            border: 3px solid var(--yellow-base);
         }
         .about-img-container:hover { transform: rotate(0deg); }
         
@@ -176,11 +228,21 @@
         .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
         .about-stat-card {
             background: linear-gradient(135deg, var(--yellow-light), var(--pink-base));
-            padding: 20px; border-radius: 15px; text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        .about-stat-card i { font-size: 32px; color: var(--pink-accent); margin-bottom: 10px; }
-        .about-stat-card h4 { font-size: 24px; color: var(--pink-accent); margin-bottom: 5px; }
+        .about-stat-card i {
+            font-size: 32px;
+            color: var(--pink-accent);
+            margin-bottom: 10px;
+        }
+        .about-stat-card h4 {
+            font-size: 24px;
+            color: var(--pink-accent);
+            margin-bottom: 5px;
+        }
         .about-stat-card p { font-size: 14px; color: var(--text-light); margin: 0; }
 
         /* Schedule Section */
@@ -188,17 +250,24 @@
         .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
         
         .schedule-card {
-            background: var(--white); border-radius: 25px; padding: 30px;
-            box-shadow: 0 10px 40px rgba(245, 183, 177, 0.2); transition: all 0.3s ease;
-            border-left: 5px solid var(--yellow-base); /* Aksen Kuning */
+            background: var(--white);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(245, 183, 177, 0.2);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--brown-primary);
         }
         .schedule-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(245, 183, 177, 0.4); }
         
         .schedule-day {
-            display: inline-block; background: linear-gradient(135deg, var(--yellow-base), var(--yellow-light));
-            color: var(--text-dark); padding: 8px 20px; border-radius: 20px;
-            font-weight: 700; margin-bottom: 15px;
-        }
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink-accent), var(--pink-medium));
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }  
         .schedule-card h3 { font-family: 'Quicksand', sans-serif; font-size: 24px; color: var(--text-dark); margin-bottom: 10px; }
         .schedule-card p { color: var(--text-light); font-size: 15px; margin-bottom: 15px; }
         .schedule-time { display: flex; align-items: center; gap: 10px; color: var(--pink-accent); font-weight: 700; }
@@ -217,7 +286,12 @@
         .gallery-item:hover img { transform: scale(1.1); }
 
         /* Social Links Section */
-        .social { padding: 100px 20px; background: linear-gradient(135deg, var(--pink-base-dark), var(--pink-accent)); color: var(--white); text-align: center; }
+        .social {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--brown-primary), var(--brown-dark));
+            color: var(--white);
+            text-align: center;
+        }        
         .social h2 { font-family: 'Quicksand', sans-serif; font-size: 42px; margin-bottom: 20px; }
         .social > p { font-size: 18px; margin-bottom: 50px; opacity: 0.95; }
         
@@ -228,8 +302,10 @@
             color: var(--pink-accent); text-decoration: none; transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        .social-link:hover { transform: translateY(-10px) scale(1.1); color: var(--yellow-base); }
-
+        .social-link:hover {
+            transform: translateY(-10px) scale(1.1);
+            color: var(--pink-accent);
+        }
         /* Contact Section */
         .contact { padding: 100px 20px; background: var(--yellow-light); }
         .contact-content {
@@ -251,8 +327,10 @@
         /* Footer */
         footer { background: var(--text-dark); color: var(--white); padding: 40px 20px; text-align: center; }
         footer p { font-size: 15px; opacity: 0.9; }
-        footer .heart { color: var(--pink-accent); animation: heartbeat 1.5s ease infinite; }
-
+        footer .heart {
+            color: var(--pink-accent);
+            animation: heartbeat 1.5s ease infinite;
+        }
         /* Animations */
         @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes fadeInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
@@ -300,14 +378,26 @@
 .gallery-item.video-thumbnail:hover img { transform: scale(1.1); }
 
 .play-button {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 70px; height: 70px; background: rgba(231, 76, 60, 0.9); /* Warna Pink Accent */
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 28px; color: white; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background: rgba(93, 78, 71, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+    border: 3px solid var(--yellow-base);
 }
 .gallery-item.video-thumbnail:hover .play-button {
-    transform: translate(-50%, -50%) scale(1.1); background: var(--pink-accent);
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--brown-primary);
 }
 
 /* --- CSS untuk Modal Popup --- */
@@ -329,6 +419,72 @@
     line-height: 1;
 }
 .close-modal:hover { color: var(--yellow-base); transform: scale(1.1); }
+
+        /* --- RESPONSIVE & FIX OFFSIDE (HP & TABLET) --- */
+        
+        /* Mencegah scroll ke samping secara global */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            
+            .hero { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+                gap: 40px; 
+                padding: 40px 20px;
+            }
+            .hero h1 { font-size: 42px; }
+            .hero-buttons { justify-content: center; }
+            .social-proof { justify-content: center; flex-wrap: wrap; }
+            
+            .about-content { grid-template-columns: 1fr; }
+            
+            /* FIX: Hilangkan rotasi gambar di HP agar tidak keluar layar */
+            .about-img-container { transform: rotate(0deg); padding: 20px; }
+            
+            .section-title h2 { font-size: 32px; }
+        }
+
+        @media (max-width: 600px) {
+            /* Perkecil ukuran font judul di HP */
+            .hero h1 { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .hero-description { font-size: 14px; }
+            
+            /* Perkecil tombol agar muat di layar kecil */
+            .btn { padding: 12px 25px; font-size: 14px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            
+            /* Perkecil padding section agar tidak sesak */
+            .about, .schedule, .gallery, .contact, .social {
+                padding: 60px 15px;
+            }
+            
+            /* FIX: Contact form agar tidak keluar layar */
+            .contact-content { padding: 30px 20px; border-radius: 20px; }
+            
+            /* FIX: Schedule grid jadi 1 kolom penuh */
+            .schedule-grid { grid-template-columns: 1fr; }
+            
+            /* FIX: Gallery grid jadi 2 kolom kecil */
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            
+            /* Perkecil ukuran About stats */
+            .about-stats { grid-template-columns: 1fr; gap: 15px; }
+            
+            /* Perkecil ukuran Social links */
+            .social-link { width: 60px; height: 60px; font-size: 28px; }
+            .social-links { gap: 15px; }
+            
+            /* FIX: Modal video di HP */
+            .modal-content { width: 95%; border-radius: 10px; }
+            .close-modal { top: -40px; right: 0; font-size: 35px; }
+        }
     </style>
 </head>
 <body>
