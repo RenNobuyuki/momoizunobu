@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MomoIzunobu - Official Website</title>
+    <title>Momo Izunobu - Official Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -812,7 +812,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo"><i class="fas fa-star"></i> MomoIzunobu</a>
+            <a href="#" class="logo"><i class="fas fa-star"></i> Momo Izunobu</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -828,9 +828,9 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-badge"><i class="fas fa-video"></i> Virtual YouTuber</div>
-            <h1>Halo! Aku MomoIzunobu! 🌱</h1>
+            <h1>Halo! Aku Momo Izunobu! 🌱</h1>
             <p class="hero-subtitle">Sugar Glider kecil yang membawa keceriaan dan warna-warni dalam setiap stream!</p>
-            <p class="hero-description">Selamat datang di dunia penuh warna MomoIzunobu! Aku suka bermain game, bernyanyi, dan mengobrol seru dengan kalian semua. Mari berteman dan bersenang-senang bersama! ✨</p>
+            <p class="hero-description">Selamat datang di dunia penuh warna Momo Izunobu! Aku suka bermain game, bernyanyi, dan mengobrol seru dengan kalian semua. Mari berteman dan bersenang-senang bersama! ✨</p>
             <div class="hero-buttons">
                 <a href="https://www.youtube.com/@MomoIzunobu" class="btn btn-primary"><i class="fab fa-youtube"></i> Subscribe</a>
                 <a href="#schedule" class="btn btn-secondary"><i class="fas fa-calendar"></i> Lihat Jadwal</a>
@@ -890,14 +890,14 @@
                     <div class="about-img-container">
                         <div class="about-img-placeholder">
                             <!-- GANTI DENGAN FOTO LOKAL KAMU -->
-                            <img src="images/character-about.png" alt="MomoIzunobu About">
+                            <img src="images/Momo2.png" alt="MomoIzunobu About">
                         </div>
                     </div>
                 </div>
                 <div class="about-text">
-                    <h3>Siapa itu MomoIzunobu?</h3>
-                    <p>MomoIzunobu adalah VTuber yang penuh semangat dan selalu berusaha menghibur para viewers dengan berbagai konten menarik. Dengan warna-warna cerah yang menjadi ciri khas, aku ingin membawa keceriaan bagi semua orang!</p>
-                    <p>Aku suka bermain game genre RPG, visual novel, dan game horor (walaupun sering teriak-teriak). Selain gaming, aku juga senang bernyanyi dan mengobrol santai dengan kalian!</p>
+                    <h3>Siapa itu Momo Izunobu?</h3>
+                    <p>Momo Izunobu adalah seorang VTuber yang lahir dari sebuah kenangan berharga tentang senyuman. Dulu, Momo menjalani hari-harinya dengan penuh keceriaan hingga suatu hari ia jatuh sakit dan kehilangan senyum yang begitu dicintai oleh sang ibu. Momo terus berusaha untuk tersenyum kembali, tetapi senyum terakhir yang berhasil ia tunjukkan justru dipenuhi rasa sakit dan kesedihan. Bagi sang ibu, hanya ada satu harapan: jika diberi kesempatan sekali lagi, ia ingin memastikan bahwa senyum itu tidak akan pernah memudar.</p>
+                    <p>Kini, Momo Izunobu hadir untuk meneruskan harapan tersebut. Melalui setiap siaran, tawa, dan kebersamaan yang dibagikan bersama para penonton, Momo ingin menghadirkan kehangatan serta menciptakan senyum-senyum baru. Setiap langkah yang diambil bukan hanya untuk mengenang masa lalu, tetapi juga untuk membuktikan bahwa senyum yang tulus dapat terus hidup selama ada orang-orang yang menjaganya bersama. 🌱</p>
                     <div class="about-stats">
                         <div class="about-stat-card"><i class="fas fa-gamepad"></i><h4>Gaming</h4><p>Favorite Activity</p></div>
                         <div class="about-stat-card"><i class="fas fa-music"></i><h4>Singing</h4><p>Hobby</p></div>
@@ -994,7 +994,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Made with <span class="heart">❤️</span> by MomoIzunobu | © 2024 All Rights Reserved</p>
+        <p>Made with <span class="heart">❤️</span> by Momo Izunobu | © 2024 All Rights Reserved</p>
     </footer>
 
     <script>
@@ -1063,12 +1063,19 @@ const YOUTUBE_API_KEY = 'AIzaSyDV_XLqbzhe7Gv-kbZl1MmgeUUDzWLVi0g';
 const YOUTUBE_CHANNEL_ID = 'UCfYg_ajuqmmuvfgjqaM998Q';
 
 function formatNumber(num) {
+    num = parseInt(num);
+    
     if (num >= 1000000) {
-        return (num / 1000000).toFixed(1) + 'M';
-    } else if (num >= 1000) {
+        // Untuk jutaan: tampilkan 2 desimal (1.85M)
+        return (num / 1000000).toFixed(2) + 'M';
+    } else if (num >= 10000) {
+        // Untuk 10K+: tampilkan 1 desimal (15.1K)
         return (num / 1000).toFixed(1) + 'K';
+    } else if (num >= 1000) {
+        // Untuk 1K-10K: tampilkan 2 desimal (1.85K)
+        return (num / 1000).toFixed(2) + 'K';
     }
-    return num;
+    return num.toString();
 }
 
 async function fetchYouTubeStats() {
